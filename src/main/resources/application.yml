@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/bebee?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+    driver-class-name: com.mysql.jdbc.Driver
+  thymeleaf:
+    cache: false
+    mode: HTML5
+    encoding: UTF-8
+    prefix: classpath:/static/
+    suffix: .html
+
+
+mybatis-plus:
+  type-aliases-package: com.bee.manage
+  mapper-locations: classpath:/mapper/manage/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+logging:
+  level:
+    com.bebee.mapper: debug

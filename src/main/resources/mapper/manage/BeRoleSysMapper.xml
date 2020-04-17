@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bee.manage.mapper.BeRoleSysMapper">
+    <select id="isRoleName" resultType="com.bee.manage.entity.BeRoleSys" >
+        SELECT * from be_role_sys where username= #{username}
+    </select>
+    <select id="isRolWord" resultType="com.bee.manage.entity.BeRoleSys" >
+        SELECT * from be_role_sys where password= #{password}
+    </select>
+</mapper>
