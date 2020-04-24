@@ -5,12 +5,20 @@ spring:
     password: root
     url: jdbc:mysql://127.0.0.1:3306/bebee?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
     driver-class-name: com.mysql.jdbc.Driver
-  thymeleaf:
-    cache: false
-    mode: HTML5
-    encoding: UTF-8
-    prefix: classpath:/static/
-    suffix: .html
+  mvc:
+    view:
+      prefix: /views/
+      suffix: .jsp
+    static-path-pattern: /**
+#  thymeleaf:
+#    cache: false
+#    mode: HTML5
+#    encoding: UTF-8
+#    prefix: classpath:/static/
+#    suffix: .jsp
+
+server:
+  port: 8080
 
 
 mybatis-plus:

@@ -1,5 +1,8 @@
 package com.bee.manage.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import com.bee.manage.entity.BeRoleSys;
@@ -7,6 +10,8 @@ import com.bee.manage.mapper.BeRoleSysMapper;
 import com.bee.manage.service.IBeRoleSysService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -32,4 +37,14 @@ public class BeRoleSysServiceImpl extends ServiceImpl<BeRoleSysMapper, BeRoleSys
         }
         return true;
     }
+
+    @Override
+    public IPage findRoleList(Page<BeRoleSys>page) {
+        IPage<BeRoleSys> iPage = mapper.selectPageVo(page);
+        if (StringUtils.isEmpty(iPage)){
+            return null;
+        }
+        return iPage;
+    }
+
 }
