@@ -48,5 +48,9 @@ public class BeRoleSys implements Serializable {
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")//页面写入数据库时格式化
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date creationTime;
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")//页面写入数据库时格式化
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private Date updateTime;
+
 
 }

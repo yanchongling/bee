@@ -1,5 +1,6 @@
 package com.bee.manage.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -11,6 +12,8 @@ import com.bee.manage.service.IBeRoleSysService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -45,6 +48,35 @@ public class BeRoleSysServiceImpl extends ServiceImpl<BeRoleSysMapper, BeRoleSys
             return null;
         }
         return iPage;
+    }
+
+    @Override
+    public IPage findRoleStart(Page<BeRoleSys> page,String startDate) {
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        QueryWrapper query = new QueryWrapper();
+        LocalDateTime parse = LocalDateTime.parse(startDate, df);
+        query.apply("UNIX_TIMESTAMP(creation_time) >= UNIX_TIMESTAMP('" + parse + "')");
+        IPage list=mapper.selectPage(page,query);
+        if (StringUtils.isEmpty(list)){
+            return null;
+        }else {
+            return list;
+        }
+
+    }
+
+    @Override
+    public IPage findRoleEnd(Page<BeRoleSys> page, String end) {
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        QueryWrapper query = new QueryWrapper();
+        LocalDateTime parse = LocalDateTime.parse(end, df);
+        query.apply("UNIX_TIMESTAMP(creation_time) <= UNIX_TIMESTAMP('" + parse + "')");
+        IPage list=mapper.selectPage(page,query);
+        if (StringUtils.isEmpty(list)){
+            return null;
+        }else {
+            return list;
+        }
     }
 
 }

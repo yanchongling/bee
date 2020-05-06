@@ -19,4 +19,7 @@ public interface IBeRoleSysService extends IService<BeRoleSys> {
 
     boolean isRole(BeRoleSys role);
     IPage findRoleList(Page<BeRoleSys> page);
+    IPage findRoleStart(Page<BeRoleSys>page,String start);
+
+    IPage findRoleEnd(Page<BeRoleSys> page, String end);
 }
