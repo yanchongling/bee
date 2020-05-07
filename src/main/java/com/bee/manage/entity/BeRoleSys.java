@@ -31,8 +31,8 @@ public class BeRoleSys implements Serializable {
     /**
      * 管理员id
      */
-    @TableId(value = "sys_id", type = IdType.AUTO)
-    private Integer sysId;
+    @TableId(value = "role_id", type = IdType.AUTO)
+    private Integer roleId;
 
     /**
      * 账号
@@ -47,7 +47,7 @@ public class BeRoleSys implements Serializable {
     private Integer state;
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")//页面写入数据库时格式化
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date creationTime;
+    private Date createTime;
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")//页面写入数据库时格式化
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;

@@ -22,4 +22,10 @@ public interface IBeRoleSysService extends IService<BeRoleSys> {
     IPage findRoleStart(Page<BeRoleSys>page,String start);
 
     IPage findRoleEnd(Page<BeRoleSys> page, String end);
+
+    List findRoleName(Page<BeRoleSys> page, String username);
+
+    boolean insertRole(String username, String password, String email);
+
+    BeRoleSys findById(String id);
 }

@@ -139,4 +139,34 @@ public class BeRoleSysController {
         }
         return null;
     }
+
+    @RequestMapping(value = "/username", method = RequestMethod.POST)
+    @ResponseBody
+    public List findRoleName(HttpServletRequest request,HttpServletResponse response){
+        String username = request.getParameter("username");
+        Page<BeRoleSys> page=new Page();
+        try {
+            if (StringUtils.isEmpty(username)){
+                response.sendError(404);
+                return null;
+            }else {
+                List roleStart = iBeRoleSysService.findRoleName(page, username);
+                return roleStart;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    @RequestMapping(value = "/insertRole", method = RequestMethod.POST)
+    @ResponseBody
+    public Boolean insertRole(HttpServletRequest request,HttpServletResponse response){
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        Page<BeRoleSys> page=new Page();
+             iBeRoleSysService.insertRole(username,password,email);
+             response.setStatus(200);
+           return true;
+    }
 }

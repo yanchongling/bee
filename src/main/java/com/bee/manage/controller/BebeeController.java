@@ -61,8 +61,10 @@ public class BebeeController {
         }
     }
 
-    @RequestMapping("/admin-edit")
-    public String adminEdit(HttpServletRequest request){
+    @RequestMapping("/admin-edit/{id}")
+    public String adminEdit(HttpServletRequest request,Model model,@PathVariable String id){
+        BeRoleSys role = iBeRoleSysService.findById(id);
+        model.addAttribute("role",role);
         return "/admin-edit";
     }
     @RequestMapping("/admin-add")

@@ -79,4 +79,29 @@ public class BeRoleSysServiceImpl extends ServiceImpl<BeRoleSysMapper, BeRoleSys
         }
     }
 
+    @Override
+    public List findRoleName(Page<BeRoleSys> page, String username) {
+        QueryWrapper query = new QueryWrapper();
+        query.like("username",username);
+        List list = mapper.selectList(query);
+
+        return list;
+    }
+
+    @Override
+    public boolean insertRole(String username, String password, String email) {
+        BeRoleSys role=new BeRoleSys();
+        role.setUsername(username);
+        role.setPassword(password);
+        role.setEmail(email);
+        int insert = mapper.insert(role);
+        return false;
+    }
+
+    @Override
+    public BeRoleSys findById(String id) {
+        BeRoleSys beRoleSys = mapper.selectById(id);
+        return beRoleSys;
+    }
+
 }
